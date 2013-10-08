@@ -17,14 +17,14 @@ class MoviesController < ApplicationController
     
     if (!params[:sort] || !params[:ratings])
        if (session[:sort] && session[:ratings])
-          flash.keep
           redirect_to movies_path(:sort => session[:sort], :ratings => session[:ratings])
+          return
        elsif (session[:sort])
-          flash.keep
           redirect_to movies_path(:sort => session[:sort])
+          return
        elsif (session[:ratings])
-          flash.keep
           redirect_to movies_path(:ratings => session[:ratings])
+          return
        end
     end
    
